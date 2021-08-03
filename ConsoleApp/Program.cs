@@ -9,14 +9,16 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            var context = new SchoolContext();
-
-            context.Initialize();
-
-            foreach (var person in context.People)
+            using (var context = new SchoolContext())
             {
-                Console.WriteLine(person.FirstName);
-            }
+                context.Initialize();
+
+                foreach (var person in context.People)
+                {
+                    Console.WriteLine(person.FirstName);
+                }
+
+            } // context.Dispose();
 
             Console.WriteLine("OK !");
         }

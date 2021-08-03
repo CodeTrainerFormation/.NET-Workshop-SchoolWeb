@@ -19,5 +19,8 @@ namespace DomainModel
         [Required]
         [StringLength(70)]
         public string LastName { get; set; }
+
+        [Range(0, 140)]
+        public int Age { get; set; }
     }
 }
