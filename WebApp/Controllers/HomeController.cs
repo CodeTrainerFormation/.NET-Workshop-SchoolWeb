@@ -1,4 +1,5 @@
 ﻿using Dal;
+using DomainModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
