@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DomainModel.Student>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>Liste des étudiants</h2>
+
+    <p>
+        <a href="/student/create">Ajouter un étudiant</a>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Age</th>
+                <th>Moyenne</th>
+                <th>*</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var student in Model)
+        {
+            
+            <tr>
+                <td>@student.PersonId</td>
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                <td>@student.Age</td>
+                <td>@student.Average</td>
+            @if (student.IsClassDelegate) {
+                <td>délégué</td>
+            } else {
+                <td></td>
+            }
+                <td>
+                    <a href="/student/edit/@student.PersonId">editer</a>
+                    <a href="/student/delete/@student.PersonId">supprimer</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Age</th>
+                <th>Moyenne</th>
+                <th>*</th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
