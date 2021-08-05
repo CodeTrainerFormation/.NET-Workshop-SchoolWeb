@@ -27,7 +27,7 @@ namespace WebApp
         {
             //services.AddSingleton();
             //services.AddScoped<IMyService, MyService>();
-            //services.AddTransient(typeof(MyService));
+            //services.AddTransient<MyService>();
 
             services.AddDbContext<SchoolContext>(options =>
             {
