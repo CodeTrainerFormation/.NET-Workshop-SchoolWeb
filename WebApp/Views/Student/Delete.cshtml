@@ -16,7 +16,7 @@
     <p>Etes vous sûr de vouloir supprimer la fiche de @Model.FirstName @Model.LastName (id @Model.PersonId) ?</p>
 
     <form method="post">
-        <input type="hidden" value="@Model.PersonId" />
+        <input type="hidden" name="personid" value="@Model.PersonId" />
         <input type="submit" value="supprimer" />
     </form>
 

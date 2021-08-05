@@ -17,11 +17,13 @@ namespace WebApp.Controllers
             this.context = context;
         }
 
+        // GET : Student/Index
         public IActionResult Index()
         {
             return View(this.context.Students.ToList());
         }
 
+        // GET : Student/Details/5
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -35,11 +37,13 @@ namespace WebApp.Controllers
             return View(student);
         }
 
+        // GET : Student/Create
         public IActionResult Create()
         {
             return View();
         }
 
+        // POST : Student/Create
         [HttpPost]
         public IActionResult Create(Student student)
         {
@@ -54,6 +58,7 @@ namespace WebApp.Controllers
             return View(student);
         }
 
+        // GET : Student/Edit/5
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -67,6 +72,7 @@ namespace WebApp.Controllers
             return View(student);
         }
 
+        // POST : Student/Edit/5
         [HttpPost]
         public IActionResult Edit(int id, Student student)
         {
@@ -84,6 +90,7 @@ namespace WebApp.Controllers
             return View(student);
         }
 
+        // GET : Student/Delete/5
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -97,14 +104,15 @@ namespace WebApp.Controllers
             return View(student);
         }
 
+        // POST : Student/Delete/5
         [HttpPost]
         [ActionName("Delete")]
-        public IActionResult DeleteConfirmed(int? id)
+        public IActionResult DeleteConfirmed(int id, int personId)
         {
-            if (id == null)
+            if (id != personId)
                 return BadRequest();
 
-            Student student = this.context.Students.Find(id);
+            Student student = this.context.Students.Find(personId);
 
             if (student == null)
                 return NotFound();
