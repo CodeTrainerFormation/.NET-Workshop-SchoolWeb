@@ -1,4 +1,5 @@
-﻿@{
+﻿@addTagHelper *, WebApp
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +7,9 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@*@await Component.InvokeAsync("ListStudent", 1)*@
+@*@await Component.InvokeAsync("ListStudent")*@
+
+@*<vc:list-student classroom-id="1"></vc:list-student>*@
+<vc:list-student></vc:list-student>

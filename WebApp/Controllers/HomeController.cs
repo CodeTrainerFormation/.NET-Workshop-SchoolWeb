@@ -15,12 +15,12 @@ namespace WebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, SchoolContext context)
+        public HomeController(ILogger<HomeController> logger)//, SchoolContext context)
         {
             _logger = logger;
 
-            if (context.People.Any())
-                Debug.WriteLine("YESSSS !");
+            //if (context.People.Any())
+            //    Debug.WriteLine("YESSSS !");
         }
 
         public IActionResult Index()
