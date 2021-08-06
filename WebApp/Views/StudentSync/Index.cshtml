@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<DomainModel.Student>
-@inject WebApp.Services.IStatisticsService StatService 
 @{
     Layout = null;
 }
@@ -12,7 +11,7 @@
     <title>Index</title>
 </head>
 <body>
-    <h2>Liste des @StatService.GetStudentsCount() étudiants</h2>
+    <h2>Liste des étudiants</h2>
 
     <p>
         <a href="/student/create">Ajouter un étudiant</a>
@@ -45,19 +44,11 @@
             } else {
                 <td></td>
             }
-            <td>
-                <a asp-action="Details" asp-route-id="@student.PersonId">les details</a>
-                <a asp-action="Edit" asp-route-id="@student.PersonId">editer</a>
-                <a asp-action="Delete" asp-route-id="@student.PersonId">supprimer</a>
-                 @*
-                @Html.ActionLink("les details", "Details", new { id = student.PersonId })
-                @Html.ActionLink("editer", "Edit", new { id = student.PersonId })
-                @Html.ActionLink("supprimer", "Delete", new { id = student.PersonId })
-
-                <a href="/student/details/@student.PersonId">les details</a>
-                <a href="/student/edit/@student.PersonId">editer</a>
-                <a href="/student/delete/@student.PersonId">supprimer</a>*@
-            </td>
+                <td>
+                    <a href="/student/details/@student.PersonId">details</a>
+                    <a href="/student/edit/@student.PersonId">editer</a>
+                    <a href="/student/delete/@student.PersonId">supprimer</a>
+                </td>
             </tr>
         }
         </tbody>

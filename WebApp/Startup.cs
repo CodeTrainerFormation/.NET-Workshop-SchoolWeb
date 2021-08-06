@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using WebApp.Services;
 
 namespace WebApp
 {
@@ -28,6 +29,8 @@ namespace WebApp
             //services.AddSingleton();
             //services.AddScoped<IMyService, MyService>();
             //services.AddTransient<MyService>();
+
+            services.AddScoped<IStatisticsService, StatisticsService>();
 
             services.AddDbContext<SchoolContext>(options =>
             {

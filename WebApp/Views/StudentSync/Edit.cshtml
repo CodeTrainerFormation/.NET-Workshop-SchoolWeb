@@ -1,0 +1,47 @@
+﻿@model DomainModel.Student
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <h2>Edition d'un étudiant</h2>
+    <form method="post">
+        <div>
+            Identifiant @Model.PersonId
+            <input type="hidden" name="personid" value="@Model.PersonId" />
+        </div>
+        <div>
+            Prénom :
+            <input type="text" name="firstname" value="@Model.FirstName" />
+        </div>
+        <div>
+            Nom :
+            <input type="text" name="lastname" value="@Model.LastName" />
+        </div>
+        <div>
+            Age :
+            <input type="number" name="age" value="@Model.Age" />
+        </div>
+        <div>
+            Moyenne de l'étudiant :
+            <input type="text" name="average" value="@Model.Average" />
+        </div>
+        <div>
+            Délégué de classe ?
+            <input type="text" name="isclassdelegate" value="@Model.IsClassDelegate.ToString()" />
+        </div>
+
+        <input type="submit" value="editer" />
+    </form>
+
+    <br />
+    <a href="/student/index">Retourner à la liste des étudiants</a>
+</body>
+</html>

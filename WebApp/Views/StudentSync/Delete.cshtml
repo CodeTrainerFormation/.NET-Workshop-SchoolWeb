@@ -1,0 +1,26 @@
+﻿@model DomainModel.Student
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h2>Suppression d'un étudiant</h2>
+
+    <p>Etes vous sûr de vouloir supprimer la fiche de @Model.FirstName @Model.LastName (id @Model.PersonId) ?</p>
+
+    <form method="post">
+        <input type="hidden" name="personid" value="@Model.PersonId" />
+        <input type="submit" value="supprimer" />
+    </form>
+
+    <br />
+    <a href="/student/index">Retourner à la liste des étudiants</a>
+</body>
+</html>

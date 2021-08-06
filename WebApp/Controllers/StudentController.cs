@@ -80,6 +80,9 @@ namespace WebApp.Controllers
             if (id != student.PersonId)
                 return BadRequest();
 
+            //if(...)
+            //ModelState.AddModelError(string.Empty, "error message");
+
             if (ModelState.IsValid)
             {
                 //this.context.Entry(student).State = EntityState.Modified;

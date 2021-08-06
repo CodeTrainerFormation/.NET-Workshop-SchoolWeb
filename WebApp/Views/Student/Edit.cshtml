@@ -12,34 +12,108 @@
 </head>
 <body>
     <h2>Edition d'un étudiant</h2>
-    <form method="post">
+
+    <form asp-action="edit" asp-route-id="@Model.PersonId" method="post">
         <div>
-            Identifiant @Model.PersonId
-            <input type="hidden" name="personid" value="@Model.PersonId" />
+            <label asp-for="PersonId"></label> : @Model.PersonId
+            <input asp-for="PersonId" type="hidden" />
         </div>
         <div>
-            Prénom :
-            <input type="text" name="firstname" value="@Model.FirstName" />
+            <label asp-for="FirstName" ></label> : 
+            <input asp-for="FirstName" />
+            <span asp-validation-for="FirstName"></span>
         </div>
         <div>
-            Nom :
-            <input type="text" name="lastname" value="@Model.LastName" />
+            <label asp-for="LastName"></label> :
+            <input asp-for="LastName" />
+            <span asp-validation-for="LastName"></span>
         </div>
         <div>
-            Age :
-            <input type="number" name="age" value="@Model.Age" />
+            <label asp-for="Age"></label> :
+            <input asp-for="Age" />
+            <span asp-validation-for="Age" ></span>
         </div>
         <div>
-            Moyenne de l'étudiant :
-            <input type="text" name="average" value="@Model.Average" />
+            <label asp-for="Average"></label> :
+            <input asp-for="Average" />
+            <span asp-validation-for="Average"></span>
         </div>
         <div>
-            Délégué de classe ?
-            <input type="text" name="isclassdelegate" value="@Model.IsClassDelegate.ToString()" />
+            <label asp-for="IsClassDelegate"></label> :
+            <input asp-for="IsClassDelegate" />
+            <span asp-validation-for="IsClassDelegate"></span>
         </div>
+
+        <div asp-validation-summary="All"></div>
 
         <input type="submit" value="editer" />
     </form>
+
+    @*@using (Html.BeginForm(FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.PersonId)
+            <div>
+                @Html.LabelFor(m => m.FirstName)
+                @Html.EditorFor(m => m.FirstName)
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.LastName)
+                @Html.EditorFor(m => m.LastName)
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Age)
+                @Html.EditorFor(m => m.Age)
+                @Html.ValidationMessageFor(m => m.Age)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Average)
+                @Html.EditorFor(m => m.Average)
+                @Html.ValidationMessageFor(m => m.Average)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.IsClassDelegate)
+                @Html.EditorFor(m => m.IsClassDelegate)
+                @Html.ValidationMessageFor(m => m.IsClassDelegate)
+            </div>
+
+            @Html.ValidationSummary()
+            @Html.ValidationSummary(true)
+
+            <input type="submit" value="editer" />
+        }*@
+
+    @*<form method="post">
+            <div>
+                Identifiant @Model.PersonId
+                <input type="hidden" name="personid" value="@Model.PersonId" />
+            </div>
+            <div>-->
+        Prénom :
+        <!--@Html.DisplayNameFor(m => m.FirstName)
+            <input type="text" name="firstname" value="@Model.FirstName" />
+        </div>
+        <div>-->
+        Nom :
+        <!--@Html.DisplayNameFor(m => m.LastName)
+                <input type="text" name="lastname" value="@Model.LastName" />
+            </div>
+            <div>
+                Age :
+                <input type="number" name="age" value="@Model.Age" />
+            </div>
+            <div>
+                Moyenne de l'étudiant :
+                <input type="text" name="average" value="@Model.Average" />
+            </div>
+            <div>
+                Délégué de classe ?
+                <input type="text" name="isclassdelegate" value="@Model.IsClassDelegate.ToString()" />
+            </div>
+
+            <input type="submit" value="editer" />
+        </form>*@
 
     <br />
     <a href="/student/index">Retourner à la liste des étudiants</a>

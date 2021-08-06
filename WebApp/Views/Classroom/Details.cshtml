@@ -1,15 +1,48 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model DomainModel.Classroom
+
 @{
+    Layout = null;
 }
 
-DETAILS
+<!DOCTYPE html>
 
-<h2>@ViewBag.Title</h2>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
 
-@* 
-    commentaire en razor
-*@
+<div>
+    <h4>Classroom</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Floor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Floor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Corridor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Corridor)
+        </dd>
+    </dl>
 
-<!-- commentaire en html -->
+    <h4>Liste des étudiants de la classe</h4>
+    @Html.Partial("_StudentList", Model.Students)
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ClassroomId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

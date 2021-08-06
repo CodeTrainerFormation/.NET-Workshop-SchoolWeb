@@ -2,6 +2,7 @@
 using DomainModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,10 @@ namespace WebApp.Controllers
             if (id == null)
                 return BadRequest();
 
-            Classroom classroom = this.context.Classrooms.Find(id);
+            //Classroom classroom = this.context.Classrooms.Find(id);
+            Classroom classroom = this.context.Classrooms
+                                              .Include(c => c.Students)
+                                              .SingleOrDefault(c => c.ClassroomId == id);
 
             if (classroom == null)
                 return NotFound();
