@@ -9,28 +9,28 @@ using System.Threading.Tasks;
 
 namespace WebApp.Controllers
 {
-    public class StudentController : Controller
+    public class StudentSyncController : Controller
     {
         private SchoolContext context;
 
-        public StudentController(SchoolContext context)
+        public StudentSyncController(SchoolContext context)
         {
             this.context = context;
         }
 
         // GET : Student/Index
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await this.context.Students.ToListAsync());
+            return View(this.context.Students.ToList());
         }
 
         // GET : Student/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
                 return BadRequest();
 
-            Student student = await this.context.Students.FindAsync(id);
+            Student student = this.context.Students.Find(id);
 
             if (student == null)
                 return NotFound();
@@ -46,12 +46,12 @@ namespace WebApp.Controllers
 
         // POST : Student/Create
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("FirstName, LastName, Age, Average, IsClassDelegate")] Student student)
+        public IActionResult Create([Bind("FirstName, LastName, Age, Average, IsClassDelegate")] Student student)
         {
             if (this.ModelState.IsValid)
             {
                 this.context.Students.Add(student);
-                await this.context.SaveChangesAsync();
+                this.context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -60,12 +60,12 @@ namespace WebApp.Controllers
         }
 
         // GET : Student/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
                 return BadRequest();
 
-            Student student = await this.context.Students.FindAsync(id);
+            Student student = this.context.Students.Find(id);
 
             if (student == null)
                 return NotFound();
@@ -75,7 +75,7 @@ namespace WebApp.Controllers
 
         // POST : Student/Edit/5
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("PersonId, FirstName, LastName, Age, Average, IsClassDelegate")] Student student)
+        public IActionResult Edit(int id, [Bind("PersonId, FirstName, LastName, Age, Average, IsClassDelegate")] Student student)
         {
             if (id != student.PersonId)
                 return BadRequest();
@@ -84,7 +84,7 @@ namespace WebApp.Controllers
             {
                 //this.context.Entry(student).State = EntityState.Modified;
                 this.context.Students.Update(student);
-                await this.context.SaveChangesAsync();
+                this.context.SaveChanges();
 
                 return RedirectToAction(nameof(Details), new { id = student.PersonId });
             }
@@ -93,12 +93,12 @@ namespace WebApp.Controllers
         }
 
         // GET : Student/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
                 return BadRequest();
 
-            Student student = await this.context.Students.FindAsync(id);
+            Student student = this.context.Students.Find(id);
 
             if (student == null)
                 return NotFound();
@@ -109,18 +109,18 @@ namespace WebApp.Controllers
         // POST : Student/Delete/5
         [HttpPost]
         [ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id, int personId)
+        public IActionResult DeleteConfirmed(int id, int personId)
         {
             if (id != personId)
                 return BadRequest();
 
-            Student student = await this.context.Students.FindAsync(personId);
+            Student student = this.context.Students.Find(personId);
 
             if (student == null)
                 return NotFound();
 
             this.context.Students.Remove(student);
-            await this.context.SaveChangesAsync();
+            this.context.SaveChanges();
 
             return RedirectToAction(nameof(Index));
         }
