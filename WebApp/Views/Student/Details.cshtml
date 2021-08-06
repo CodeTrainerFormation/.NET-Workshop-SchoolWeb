@@ -1,37 +1,29 @@
 ﻿@model DomainModel.Student
 @{
-    Layout = null;
+    ViewBag.Title = "Details";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <h2>@Model.FirstName @Model.LastName</h2>
+<h2>@Model.FirstName @Model.LastName</h2>
 
-    @if (Model.IsClassDelegate)
-    {
-        <h3><em>est délégué de classe</em></h3>
-    }
+@if (Model.IsClassDelegate)
+{
+    <h3><em>est délégué de classe</em></h3>
+}
 
-    <dl>
-        <dt>Id</dt>
-        <dd>@Model.PersonId</dd>
-        <dt>Prénom</dt>
-        <dd>@Model.FirstName</dd>
-        <dt>Nom</dt>
-        <dd>@Model.LastName</dd>
-        <dt>Age</dt>
-        <dd>@Model.Age ans</dd>
-        <dt>Moyenne actuelle</dt>
-        <dd>@Model.Average / 20</dd>
-    </dl>
+<dl>
+    <dt>Id</dt>
+    <dd>@Model.PersonId</dd>
+    <dt>Prénom</dt>
+    <dd>@Model.FirstName</dd>
+    <dt>Nom</dt>
+    <dd>@Model.LastName</dd>
+    <dt>Age</dt>
+    <dd>@Model.Age ans</dd>
+    <dt>Moyenne actuelle</dt>
+    <dd>@Model.Average / 20</dd>
+</dl>
 
-    <br />
-    <a href="/student/index">Retourner à la liste des étudiants</a>
-</body>
-</html>
+<br />
+<a href="/student/index">Retourner à la liste des étudiants</a>
+

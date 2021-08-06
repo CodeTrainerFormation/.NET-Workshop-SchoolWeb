@@ -1,77 +1,72 @@
 ﻿@model IEnumerable<DomainModel.Student>
-@inject WebApp.Services.IStatisticsService StatService 
+@inject WebApp.Services.IStatisticsService StatService
 @{
-    Layout = null;
+    ViewBag.Titlte = "Index";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <h2>Liste des @StatService.GetStudentsCount() étudiants</h2>
+<h2>Liste des @StatService.GetStudentsCount() étudiants</h2>
 
-    <p>
-        <a href="/student/create">Ajouter un étudiant</a>
-    </p>
+<p>
+    <a href="/student/create">Ajouter un étudiant</a>
+</p>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Age</th>
-                <th>Moyenne</th>
-                <th>*</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Age</th>
+            <th>Moyenne</th>
+            <th>*</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
         @foreach (var student in Model)
         {
-            
+
             <tr>
                 <td>@student.PersonId</td>
                 <td>@student.FirstName</td>
                 <td>@student.LastName</td>
                 <td>@student.Age</td>
                 <td>@student.Average</td>
-            @if (student.IsClassDelegate) {
-                <td>délégué</td>
-            } else {
-                <td></td>
-            }
-            <td>
-                <a asp-action="Details" asp-route-id="@student.PersonId">les details</a>
-                <a asp-action="Edit" asp-route-id="@student.PersonId">editer</a>
-                <a asp-action="Delete" asp-route-id="@student.PersonId">supprimer</a>
-                 @*
-                @Html.ActionLink("les details", "Details", new { id = student.PersonId })
-                @Html.ActionLink("editer", "Edit", new { id = student.PersonId })
-                @Html.ActionLink("supprimer", "Delete", new { id = student.PersonId })
+                @if (student.IsClassDelegate)
+                {
+                    <td>délégué</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>
+                    <a asp-action="Details" asp-route-id="@student.PersonId">les details</a>
+                    <a asp-action="Edit" asp-route-id="@student.PersonId">editer</a>
+                    <a asp-action="Delete" asp-route-id="@student.PersonId">supprimer</a>
+                    @*
+                        @Html.ActionLink("les details", "Details", new { id = student.PersonId })
+                        @Html.ActionLink("editer", "Edit", new { id = student.PersonId })
+                        @Html.ActionLink("supprimer", "Delete", new { id = student.PersonId })
 
-                <a href="/student/details/@student.PersonId">les details</a>
-                <a href="/student/edit/@student.PersonId">editer</a>
-                <a href="/student/delete/@student.PersonId">supprimer</a>*@
-            </td>
+                        <a href="/student/details/@student.PersonId">les details</a>
+                        <a href="/student/edit/@student.PersonId">editer</a>
+                        <a href="/student/delete/@student.PersonId">supprimer</a>*@
+                </td>
             </tr>
         }
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>ID</th>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Age</th>
-                <th>Moyenne</th>
-                <th>*</th>
-                <th></th>
-            </tr>
-        </tfoot>
-    </table>
-</body>
-</html>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Age</th>
+            <th>Moyenne</th>
+            <th>*</th>
+            <th></th>
+        </tr>
+    </tfoot>
+</table>
+

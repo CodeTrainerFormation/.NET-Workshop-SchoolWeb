@@ -37,7 +37,6 @@ namespace WebApp.Controllers
             var teacher = await _context.Teachers
                 .Include(t => t.Classroom)
                 .FirstOrDefaultAsync(m => m.PersonId == id);
-
             if (teacher == null)
             {
                 return NotFound();

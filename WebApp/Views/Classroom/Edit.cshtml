@@ -1,42 +1,31 @@
 ﻿@model DomainModel.Classroom
 @{
-    Layout = null;
+    ViewData["Title"] = "Edit";
 }
 
-<!DOCTYPE html>
+<form asp-action="edit" asp-route-id="@Model.ClassroomId" method="post">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-    @*<script type="text/javascript" src="site.js"></script>*@
-</head>
-<body>
-    <form asp-action="edit" asp-route-id="@Model.ClassroomId" method="post">
+    <div asp-validation-summary="All"></div>
 
-        <div asp-validation-summary="All"></div>
+    <div>
+        <label asp-for="ClassroomId"></label> : @Model.ClassroomId
+        <input asp-for="ClassroomId" type="hidden" />
+    </div>
+    <div>
+        <label asp-for="Name"></label> :
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="Floor"></label> :
+        <input asp-for="Floor" />
+        <span asp-validation-for="Floor"></span>
+    </div>
+    <div>
+        <label asp-for="Corridor"></label> :
+        <input asp-for="Corridor" />
+        <span asp-validation-for="Corridor"></span>
+    </div>
 
-        <div>
-            <label asp-for="ClassroomId"></label> : @Model.ClassroomId
-            <input asp-for="ClassroomId" type="hidden" />
-        </div>
-        <div>
-            <label asp-for="Name"></label> :
-            <input asp-for="Name" />
-            <span asp-validation-for="Name"></span>
-        </div>
-        <div>
-            <label asp-for="Floor"></label> :
-            <input asp-for="Floor" />
-            <span asp-validation-for="Floor"></span>
-        </div>
-        <div>
-            <label asp-for="Corridor"></label> :
-            <input asp-for="Corridor" />
-            <span asp-validation-for="Corridor"></span>
-        </div>
-
-        <input type="submit" value="editer" />
-    </form>
-</body>
-</html>
+    <input type="submit" value="editer" />
+</form>

@@ -130,8 +130,9 @@ namespace WebApp.Controllers
 
         public IActionResult Photo(int studentid)
         {
+            //System.IO.File.ReadAllBytes()
             // TODO : file not found
-            return File(@"Photos\student-logo.png", "image/png", "student.png");
+            return File("/Photos/student-logo.png", "image/png", "student.png");
         }
     }
 }

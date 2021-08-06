@@ -1,42 +1,33 @@
 ﻿@{
-    Layout = null;
+    ViewData["Title"] = "Create";
 }
 
-<!DOCTYPE html>
+<h2>Création d'un étudiant</h2>
+<form method="post">
+    <div>
+        Prénom :
+        <input type="text" name="firstname" />
+    </div>
+    <div>
+        Nom :
+        <input type="text" name="lastname" />
+    </div>
+    <div>
+        Age :
+        <input type="number" name="age" />
+    </div>
+    <div>
+        Moyenne de l'étudiant :
+        <input type="text" name="average" />
+    </div>
+    <div>
+        Délégué de classe ?
+        <input type="text" name="isclassdelegate" />
+    </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
-    <h2>Création d'un étudiant</h2>
-    <form method="post">
-        <div>
-            Prénom :
-            <input type="text" name="firstname" />
-        </div>
-        <div>
-            Nom :
-            <input type="text" name="lastname" />
-        </div>
-        <div>
-            Age :
-            <input type="number" name="age" />
-        </div>
-        <div>
-            Moyenne de l'étudiant :
-            <input type="text" name="average" />
-        </div>
-        <div>
-            Délégué de classe ?
-            <input type="text" name="isclassdelegate" />
-        </div>
+    <input type="submit" value="créer" />
+</form>
 
-        <input type="submit" value="créer" />
-    </form>
+<br />
+<a href="/student/index">Retourner à la liste des étudiants</a>
 
-    <br />
-    <a href="/student/index">Retourner à la liste des étudiants</a>
-</body>
-</html>
