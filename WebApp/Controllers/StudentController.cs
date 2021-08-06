@@ -127,5 +127,11 @@ namespace WebApp.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Photo(int studentid)
+        {
+            // TODO : file not found
+            return File(@"Photos\student-logo.png", "image/png", "student.png");
+        }
     }
 }

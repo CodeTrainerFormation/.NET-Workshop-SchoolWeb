@@ -11,6 +11,7 @@ using WebApp.Filters;
 
 namespace WebApp.Controllers
 {
+    //[Route("Class")]
     public class ClassroomController : Controller
     {
         private SchoolContext context;
@@ -20,7 +21,10 @@ namespace WebApp.Controllers
             this.context = context;
         }
 
-        // GET: Classroom/Index
+        // GET: Class
+        // GET: Class/List
+        //[Route("")]
+        //[Route("List")]
         public IActionResult Index()
         {
             var classrooms = this.context.Classrooms.ToList();
@@ -30,6 +34,7 @@ namespace WebApp.Controllers
 
         // GET: Classroom/Details/5
         [Log]
+        //[Route("Details/{id?}")]
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -51,6 +56,7 @@ namespace WebApp.Controllers
 
         // GET: Classroom/Create
         [HttpGet]
+        //[Route("Create")]
         public IActionResult Create()
         {
             return View();
@@ -64,6 +70,38 @@ namespace WebApp.Controllers
             {
                 this.context.Classrooms.Add(classroom);
                 this.context.SaveChanges();
+                return RedirectToAction(nameof(Details), new { id = classroom.ClassroomId });
+            }
+
+            return View(classroom);
+        }
+
+        // GET : Classroom/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+                return BadRequest();
+
+            Classroom classroom = await this.context.Classrooms.FindAsync(id);
+
+            if (classroom == null)
+                return NotFound();
+
+            return View(classroom);
+        }
+
+        // POST : Classroom/Edit/5
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("ClassroomId,Name,Floor,Corridor")] Classroom classroom)
+        {
+            if (id != classroom.ClassroomId)
+                return BadRequest();
+
+            if (ModelState.IsValid)
+            {
+                this.context.Classrooms.Update(classroom);
+                await this.context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Details), new { id = classroom.ClassroomId });
             }
 

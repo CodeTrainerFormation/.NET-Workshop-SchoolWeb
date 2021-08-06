@@ -64,6 +64,13 @@ namespace WebApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "StudentPhoto",
+                    pattern: "Photo/{studentid}",
+                    defaults: new { controller = "Student", action = "Photo" },
+                    constraints: new { studentid = @"\d+" }
+                );
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
