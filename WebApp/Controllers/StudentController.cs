@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace WebApp.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class StudentController : Controller
     {
         private SchoolContext context;
@@ -19,8 +20,10 @@ namespace WebApp.Controllers
         }
 
         // GET : Student/Index
+        [ResponseCache(Duration = 60)]
         public async Task<IActionResult> Index()
         {
+            //ViewBag.Title = "Test";
             return View(await this.context.Students.ToListAsync());
         }
 
@@ -112,6 +115,7 @@ namespace WebApp.Controllers
         // POST : Student/Delete/5
         [HttpPost]
         [ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id, int personId)
         {
             if (id != personId)

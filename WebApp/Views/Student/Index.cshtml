@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<DomainModel.Student>
 @inject WebApp.Services.IStatisticsService StatService
 @{
-    ViewBag.Titlte = "Index";
+    //ViewBag.Title = ViewBag.Title + "Index";
+    ViewBag.Title = "Index";
 }
 
-
-<h2>Liste des @StatService.GetStudentsCount() étudiants</h2>
+@*@section Header{
+    <h2>Liste des @StatService.GetStudentsCount() étudiants</h2>
+}*@
 
 <p>
     <a href="/student/create">Ajouter un étudiant</a>

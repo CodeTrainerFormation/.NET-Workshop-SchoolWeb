@@ -25,6 +25,11 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
+            if (!User.Identity.IsAuthenticated)
+                return Unauthorized();
+
+            var name = User.Identity.Name;
+
             return View();
         }
 

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Services;
+using Microsoft.AspNetCore.Authentication;
 
 namespace WebApp
 {
@@ -37,6 +38,10 @@ namespace WebApp
                 options.UseSqlServer(Configuration.GetConnectionString("SchoolDb"));
             });
 
+            services.AddAuthentication();
+
+            //services.AddWebOptimizer();
+
             services.AddControllersWithViews();
         }
 
@@ -54,11 +59,14 @@ namespace WebApp
                 app.UseHsts();
             }
 
+            //add.UseWebOptimizer();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
